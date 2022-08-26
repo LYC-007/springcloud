@@ -1,0 +1,24 @@
+
+# Swagger\u914D\u7F6E
+swagger:
+    # \u662F\u5426\u5F00\u542Fswagger
+    enabled: true
+    # \u8BF7\u6C42\u524D\u7F00
+    pathMapping: /dev-api
+
+# \u9879\u76EE\u76F8\u5173\u914D\u7F6E
+ruoyi:
+    # \u540D\u79F0
+    name: RuoYi
+    # \u7248\u672C
+    version: 3.4.0
+    # \u7248\u6743\u5E74\u4EFD
+    copyrightYear: 2021
+    # \u5B9E\u4F8B\u6F14\u793A\u5F00\u5173
+    demoEnabled: true
+    # \u6587\u4EF6\u8DEF\u5F84 \u793A\u4F8B\uFF08 Windows\u914D\u7F6ED:/ruoyi/uploadPath\uFF0CLinux\u914D\u7F6E /home/ruoyi/uploadPath\uFF09
+    profile: D:/ruoyi/uploadPath
+    # \u83B7\u53D6ip\u5730\u5740\u5F00\u5173
+    addressEnabled: false
+    # \u9A8C\u8BC1\u7801\u7C7B\u578B math \u6570\u7EC4\u8BA1\u7B97 char \u5B57\u7B26\u9A8C\u8BC1
+    captchaType: math

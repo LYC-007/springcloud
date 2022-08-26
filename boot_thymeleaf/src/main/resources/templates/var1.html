@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>变量表达式</title>
+</head>
+<body>
+  <p>获取简单类型的数据</p>
+  <p th:text="${myname}"></p>
+  <p th:text="${myage}"></p>
+
+  <br/>
+  <p>对象类型的属性值</p>
+  <p th:text="${student.id}">id</p>
+  <p th:text="${student.name}">name</p>
+  <p th:text="${student.getName()}">name</p>
+  <p th:text="${student.email}">email</p>
+  <p th:text="${student.age}">age</p>
+  <br/>
+  <div>性别：<span th:text="${student.sex}"></span> </div>
+
+  <br/>
+  <div>
+       学校名称：<span th:text="${student.mySchool.schname}"></span>
+       学校地址：<span th:text="${student.mySchool.schaddress}"></span>
+       学校地址2：<span th:text="${student.mySchool.getSchaddress()}"></span>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <p>true判断</p>
+   <p th:if="true">判断boolean,true</p>
+   <p th:if="5>0">boolean判断 5>0</p>
+   <p th:if="'true'">判断'true'字符串</p>
+   <p th:if="'ok'">判断'ok'</p>
+   <p th:if="99">数字99</p>
+   <p th:if="${old}">模型中true</p>
+    <p th:if="${login}">模型中的string</p>
+    <p th:if="${num1}">数字10</p>
+    <p th:if="${num2}">数字-2</p>
+    <p th:if="${str0}">""字符串也是true</p>
+    <p th:if="${obj1}">非null的Student对象</p>
+
+    <br/>
+    <p>不满足条件</p>
+    <p th:unless="${yong}"> yong 是 false,boolean</p>
+    <p th:unless="${str1}">str1 是 off</p>
+    <p th:unless="${str2}">str2 是 no</p>
+    <p th:unless="${str3}">str3是 false字符串</p>
+    <p th:unless="${num3}">num3是0</p>
+    <p th:unless="${obj2}">obj2 is null</p>
+</body>
+</html>

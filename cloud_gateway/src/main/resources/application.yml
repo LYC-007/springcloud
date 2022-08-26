@@ -1,0 +1,44 @@
+#暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 9527
+spring:
+  cloud:
+    gateway:
+      #更多的路由规则参考官网:https://spring.io/projects/spring-cloud-gateway#learn
+      routes:
+        - id: payment_routh #payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名
+          # uri: http://localhost:8001          #匹配后提供服务的路由地址
+          uri: lb://cloud-payment-service #匹配后提供服务的路由地址
+          predicates:
+            - Path=/payment/lb/**         # 断言，路径相匹配的进行路由
+            #- After=2020-02-05T15:10:03.685+08:00[Asia/Shanghai]         # 断言，路径相匹配的进行路由
+            #- Before=2020-02-05T15:10:03.685+08:00[Asia/Shanghai]         # 断言，路径相匹配的进行路由
+            #- Between=2020-02-02T17:45:06.206+08:00[Asia/Shanghai],2020-03-25T18:59:06.206+08:00[Asia/Shanghai]
+
+            #Cookie Route Predicate需要两个参数，一个是 Cookie name ,一个是正则表达式。路由规则会通过获取对应的 Cookie name 值和正则表达式去匹配，如果匹配上就会执行路由，如果没有匹配上则不执行
+            #- Cookie=username,zzyy
+
+            #两个参数：一个是属性名称和一个正则表达式，这个属性值和正则表达式匹配则执行。
+            #- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式
+
+            #Host Route Predicate 接收一组参数，一组匹配的域名列表，这个模板是一个 ant 分隔的模板，用.号作为分隔符。它通过参数中的主机地址作为匹配规则。
+            #- Host=**.atguigu.com
+
+            #请求方式为设定的才会允许访问
+            #- Method=GET
+
+            #支持传入两个参数，一个是属性名，一个为属性值，属性值可以是正则表达式。\d+表示1个或多个0到9的数字
+            # http://localhost:9527/payment/lb?username=31
+            #- Query=username, \d+  # 要有参数名username并且值还要是整数才能路由
+          filters:
+            #https://docs.spring.io/spring-cloud-gateway/docs/2.2.9.RELEASE/reference/html/#the-rewritepath-gatewayfilter-factory
+            #重写路由
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+            #- AddRequestParameter=X-Request-Id,1024 #过滤器工厂会在匹配的请求头加上一对请求头，名称为X-Request-Id值为1024
+
+

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: cloud-provide
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        #file-extension: yaml
+
+        #只要你在nacos的配置文件名符合下面的格式，那么这个配置就生效
+        #${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

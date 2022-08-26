@@ -1,0 +1,16 @@
+{
+    "properties":{
+        "name":{
+            "type":"text",
+            "index":true
+        },
+        "sex":{
+            "type":"text",
+            "index":false
+        },
+        "age":{
+            "type":"long",
+            "index":false
+        }
+    }
+}

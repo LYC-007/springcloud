@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <p>准备开始删除内容</p>
+  <div th:remove="all">
+      指定all删除选项
+      <p>
+          Hello
+          <span>我是span</span>
+      </p>
+  </div>
+  <p>指定删除的是body</p>
+  <div th:remove="body">
+      指定body
+      <p>hello body</p>
+  </div>
+
+  <p>指定tag删除范围值</p>
+  <div th:remove="tag">
+       tag范围值
+       <p>hello</p>
+  </div>
+
+  <br/>
+  <p>指定all-but-first</p>
+  <div th:remove="all-but-first">
+      <p>第一个段落</p>
+      <p>第二个段落</p>
+      <p>第三个段落</p>
+  </div>
+</body>
+</html>

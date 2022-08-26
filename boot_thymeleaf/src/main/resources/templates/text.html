@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <p>文本使用</p>
+  <p th:text="学习文本表达式">文本处理</p>
+  <p th:text="'hello thymeleaf'">有空格的文本</p>
+  <p th:text="'宝马'+'良驹'">连接字符串+</p>
+  <p th:text="'学习'+${info}">学习开发语言</p>
+  <p th:text="|'您学习' ${info}|">学习</p>
+  <p th:text="您好 + |${n1},${n2}|">学习开发语言</p>
+  <p th:text="123">数字文本</p>
+  <p th:text="true">boolean文本</p>
+</body>
+</html>

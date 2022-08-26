@@ -1,0 +1,16 @@
+
+spring:
+  data:
+    mongodb:
+      #如果你自己指定索引的名称那么，请添加: auto-index-creation: false  这个配置
+      auto-index-creation: false
+      host: 192.168.236.133
+      port: 27017
+      username: admin
+      password: '123456' # 密码必须使用字符串且是单引号，否则报错
+      database: articledb #需要连接的数据库
+      #有一些数据库名是保留的admin,local,config
+      #admin:从权限的角度来看，这是"root"数据库。要是将一个用户添加到这个数据库，这个用户自动继承所有数据库的权限。
+      authentication-database: admin # 认证数据库（账户所在数据库,就是创建账户的数据库）
+server:
+  port: 8015

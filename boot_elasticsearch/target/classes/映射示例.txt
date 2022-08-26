@@ -1,0 +1,100 @@
+PUT product
+{
+  "mappings": {
+    "properties": {
+      "skuId": {
+        "type": "long"
+      },
+      "spuId": {
+        "type": "long"
+      },
+      "skuTitle": {
+        "type": "text",
+        "analyzer": "ik_smart"    指定分词器;
+      },
+      "skuPrice": {
+        "type": "keyword"
+      },
+      "skuImg": {
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "saleCount": {
+        "type": "long"
+      },
+      "hosStock": {
+        "type": "boolean"
+      },
+      "hotScore": {
+        "type": "long"
+      },
+      "brandId": {
+        "type": "long"
+      },
+      "catelogId": {
+        "type": "long"
+      },
+      "brandName": {
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "brandImg": {
+        "type": "keyword",     keyword：不可分词，数据会作为完整字段进行匹配(必须写完整的字段值才能查询到该值)
+        "index": false,
+        "doc_values": false    冗余存储的字段都标上这两个属性：标识并不用来检索，不会用来聚合操作;
+      },
+      "catelogName": {
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "attrs": {
+        "type": "nested",     如果是对象的内部对象就得标上 “nested”嵌入式的属性
+        "properties": {
+          "attrId": {
+            "type": "long"
+          },
+          "attrName": {
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          },
+          "attrValue": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}
+映射数据说明：
+type：类型，Elasticsearch 中支持的数据类型非常丰富，说几个关键的：
+String 类型，又分两种：
+    text：可分词（查询的时候不用写完字段值也能进行查询;）
+    keyword：不可分词，数据会作为完整字段进行匹配(必须写完整的字段值才能查询到该值)
+Numerical：数值类型，分两类
+    基本数据类型：long、integer、short、byte、double、float、half_float
+    浮点数的高精度类型：scaled_float
+Date：日期类型
+Array：数组类型
+Object：对象
+index：是否索引，默认为 true，也就是说你不进行任何配置，所有字段都会被索引。
+true：字段会被索引，则可以用来进行搜索（能被查询）
+false：字段不会被索引，不能用来搜索（不能被查询到）
+store：是否将数据进行独立存储，默认为 false
+     原始的文本会存储在_source 里面，默认情况下其他提取出来的字段都不是独立存储的，是从_source 里面提取出来的。当然你也可以独立的存储某个字段，只要设置"store": true 即可，获取独立存储的字段要比从_source 中解析快得多，但是也会占用更多的空间，所以要根据实际业务需求来设置。
+analyzer：分词器，这里的 ik_max_word 即使用 ik 分词器,后面会有专门的章节学习
+
+映射关系只能添加字段，不能修改，如果要修改只能把以前的删除了创建一个新的映射规则，在进行数据牵引;
+如果后期还需要添加一个字段,向 ES 服务器发 PUT 请求 ：http://127.0.0.1:9200/索引名称/_mapping
+{
+    "properties": {
+        "employee-id": {
+            "type": "keyword",
+            "index": false
+        }
+    }
+}
+

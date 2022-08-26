@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:lang-xmllang="en">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .large-font{
+            font-size: 20pt;
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        function  fun1() {
+            alert("button click");
+        }
+    </script>
+</head>
+<body>
+    <form action="./hello.html" method="post" th:attr="action=${myaction}">
+        账号：<input type="text" name="username"><br/>
+        密码：<input type="text" name="pwd"><br/>
+        <input type="button" value="登录"  th:attr="onclick='fun1()',value=${mytext}">
+    </form>
+    <br/>
+    <form th:action="@{/user/listuser}" method="get">
+        username:<input type="text" value="" name="username"><br/>
+        password:<input type="text" value="" name="pwd"><br/>
+        <input type="submit" th:value="${mytext}">
+    </form>
+    <br/>
+    <a th:href="@{./hello.html} " th:class="large-font">连接地址</a>
+    <br/>
+    <img th:src="@{../static/img/ex1.jpg}" th:alt-title="我的图片">
+    <br/>
+
+    <input type="checkbox" value="游泳" th:checked="${selected}">游泳<br/>
+    <input type="checkbox" value="骑行" th:checked="${unselect}">骑行<br/>
+</body>
+</html>

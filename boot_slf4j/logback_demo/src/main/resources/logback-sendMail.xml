@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--设置log4j2的自身log级别为warn-->
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，
+    当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<configuration status="warn" monitorInterval="30">
+    <!--logback异常邮件发送-->
+    <!-- 邮件配置 -->
+    <!-- name的值是变量的名称，value的值时变量定义的值。通过定义的值会被插入到logger上下文中。定义后，可以使“${}”来使用变量。 -->
+    <springProperty scope="context" name="smtpHost" source="spring.mail.host" />
+    <springProperty scope="context" name="username" source="spring.mail.username" />
+    <springProperty scope="context" name="password" source="spring.mail.password" />
+    <springProperty scope="context" name="mailSubject" source="spring.mail.error.subject" />
+    <springProperty scope="context" name="mailTo" source="spring.mail.error.to" />
+    <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
+        <!-- 例如：如果此处配置了INFO级别，则后面其他位置即使配置了DEBUG级别的日志，也不会被输出 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <!-- 按照上面配置的LOG_PATTERN来打印日志，若彩色打印，将pattern中名字换成彩色日志格式即可-->
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="MAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>${smtpHost}</smtpHost>
+        <smtpPort>465</smtpPort>
+        <username>${username}</username>
+        <password>${password}</password>
+        <SSL>true</SSL>
+        <asynchronousSending>true</asynchronousSending>
+        <from>${username}</from>
+        <to>${mailTo}</to>
+        <subject>${mailSubject}: %logger{0} </subject>
+        <charsetEncoding>UTF-8</charsetEncoding>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <!-- 每个电子邮件只发送一个日志条目 -->
+            <bufferSize>10</bufferSize>
+        </cyclicBufferTracker>
+        <!--HTML展示-->
+        <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <!--错误级别(只会提示大于该级别的错误)-->
+            <level>ERROR</level>
+        </filter>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="MAIL"/>
+    </root>
+</configuration>

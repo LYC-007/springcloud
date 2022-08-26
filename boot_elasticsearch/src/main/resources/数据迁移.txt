@@ -1,0 +1,11 @@
+POST _reindex      //固定写法
+{
+    "source": { "index": "twitter"},
+    "dest": { "index": "new_twitter"}
+}
+将旧索引的 type 下的数据进行迁移
+POST _reindex
+{
+    "source": {"index": "twitter", "type": "tweet"},
+    "dest": { "index": "tweets"}
+}

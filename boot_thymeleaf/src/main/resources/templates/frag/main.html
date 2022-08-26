@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <p>使用model中的数据表示模版名称</p>
+   <div th:insert="frag/footer::${tplname}">
+
+   </div>
+   <br/>
+
+
+   <p>使用header名称的模版</p>
+   <div th:insert="frag/footer::header">
+       插入header名称的模版
+   </div>
+
+   <p>参数模版</p>
+   <div th:insert="frag/footer::funtpl(one='张三',two='李四') ">
+       参数模版
+   </div>
+   <br/>
+   <p>页脚</p>
+   <div th:insert="frag/footer::copy"></div>
+   <div th:insert="~{frag/footer::copy}"</div>
+</body>
+</html>

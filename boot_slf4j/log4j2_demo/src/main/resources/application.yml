@@ -1,0 +1,23 @@
+server:
+  port: 8017
+logging:
+  config: classpath:log4j2-sendMail.xml
+spring:
+  #邮箱配置
+  mail:
+    error:
+      to: 2458918040@qq.com
+    host: smtp.163.com
+    # 使用自己的发送方用户名 + 授权码填充
+    #spring.mail.port不指定；spring.mail.password不是邮箱密码，需要登录mail.163.com，前往设置 客户端授权密码中获取的一个16个字符的密码，同时允许POP3/SMTP服务。
+    username: qingyunpang@163.com
+    password: HNWCNOQUOGEUPNCS
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp

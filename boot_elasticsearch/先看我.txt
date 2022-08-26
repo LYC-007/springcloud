@@ -1,0 +1,7 @@
+ES目前有4种客户端：Jest client、Rest client、Transport client、Node client:
+1.Transport client是不需要单独一个节点，脱离在集群之外。通过9300端口，使用 Elasticsearch 的原生 传输 协议和集群交互。（集群交互的端口都是通过9300）（7.0弃用）
+2.Node client需要单独建立一个节点，连接该节点进行操作，该节点不能存储数据，也不能成为主节点。通过9300端口，使用 Elasticsearch 的原生 传输 协议和集群交互。（集群交互的端口都是通过9300）（2.3弃用）
+3.ES提供了两个JAVA REST client 版本
+    A.Java Low Level REST Client: 低级别的REST客户端，通过http与集群交互，用户需自己编组请求JSON串，及解析响应JSON串。兼容所有ES版本。
+    B.Java High Level REST Client: 高级别的REST客户端，基于低级别的REST客户端，增加了编组请求JSON串、解析响应JSON串等相关api。使用的版本需要保持和ES服务端的版本一致，否则会有版本问题;
+4.Jest是Elasticsearch 的Java Http Rest 客户端，ElasticSearch已经具备应用于Elasticsearch内部的Java API，但是Jest弥补了ES自有API缺少Elasticsearch Http Rest接口客户端的不足;

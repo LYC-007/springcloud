@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="10&gt;5?'10大于5':'10不大于5'"> 判断10大于 5</p>
+    <p th:text="${age}&gt;20 ? '大于20':'小于20'">判断20</p>
+    <p th:text="${age} == null ? 'age是null': ${age}">判断age是不是null</p>
+    <p th:text="${age} !=null ? (${age}&gt;30?'age大于20':'不够30') : 'age 是null' ">嵌套使用三元</p>
+    <p th:text="${islogin}?'登录'">省略y表达式</p>
+    <p th:text="!${islogin}?'没有登录'">省略y</p>
+</body>
+</html>

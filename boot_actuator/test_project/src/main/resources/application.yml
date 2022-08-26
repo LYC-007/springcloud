@@ -1,0 +1,24 @@
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8010 #监控客户端的地址
+        instance:
+          prefer-ip: true    #让当前项目使用ip注册到监控客户端
+
+  application:
+    name: project_test   #监控项目的名字便于在监控界面显示
+
+
+management:
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露所有
+  endpoint:
+    health:
+      show-details: always  #对单个端点进行的监控信息进行详细设置，表示展示详细的健康信息
+server:
+  port: 8009

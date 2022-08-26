@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <p>循环each使用</p>
+  <br/>
+  <table>
+      <thead>
+      <tr>
+          <td>id</td>
+          <td>姓名</td>
+          <td>年龄</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="mystu:${students}">
+          <td th:text="${mystu.id}"></td>
+          <td th:text="${mystu.name}"></td>
+          <td th:text="${mystu.age}"></td>
+      </tr>
+      </tbody>
+  </table>
+
+  <br/>
+  <br/>
+  <p>循环each -Map<String,String></p>
+  <p th:each="m:${stumap}">
+      <span th:text="${m.key}"></span>
+      <span th:text="${m.value}"></span>
+  </p>
+
+  <br/>
+  <br/>
+  <p>循环List<Map></p>
+  <div>
+      <ul th:each="lm:${listmap}">
+          <li th:each="entry:${lm}" th:text="${entry.key}"></li>
+          <li th:each="entry:${lm}" th:text="${entry.value}"></li>
+      </ul>
+  </div>
+  <br/>
+  <br/>
+  <p>循环数组</p>
+  <ul>
+      <li th:each="na:${names}" th:text="${na}">值</li>
+  </ul>
+  <br/>
+  <br/>
+  <p>select组件</p>
+  <div>
+      <select>
+          <option th:each="city:${citys}"
+                  th:value="${city.key}"
+                  th:text="${city.value}"
+                  th:selected="${city.value} eq ${choice}"
+          >文本</option>
+      </select>
+  </div>
+  <br/>
+  <br/>
+  <p>使用循环的状态变量,获取循环中的信息</p>
+  <table border="1" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+            <td>信息</td>
+            <td>id</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>奇偶行</td>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr th:each="stu,loopStatus:${students}">
+            <td th:text="${loopStatus.count} + '/' + ${loopStatus.size}"></td>
+            <td th:text="${stu.id}"></td>
+            <td th:text="${stu.name}"></td>
+            <td th:text="${stu.age}"></td>
+            <td th:text="${loopStatus.odd ? '奇数行':'偶数行'}"></td>
+        </tr>
+      </tbody>
+  </table>
+</body>
+</html>

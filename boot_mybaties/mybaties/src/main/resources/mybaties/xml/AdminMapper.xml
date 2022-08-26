@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.mapper.AdminMapper">
+    <insert id="insertOneAdmin" useGeneratedKeys="true" keyProperty="id">-- 插入自增主键并返回
+        insert into `admin`(`username`,`password`) value (#{admin.userName},#{admin.password})
+    </insert>
+    <select id="findAll" resultType="demo.domain.Admin">
+        Select * from `admin`
+    </select>
+</mapper>

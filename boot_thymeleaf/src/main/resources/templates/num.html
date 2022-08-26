@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>数字表达式使用</p>
+    <p th:text="55">字面常量数字</p>
+    <p th:text="6+6">数字运算</p>
+    <p th:text="6+6+'这个一个字符串'+10+20">字符串连接</p>
+    <p th:text="6+6+'连接字符串'+(10+20)">使用括号提高优先级</p>
+    <p th:text="${n1}-${n2}">使用模型中数据</p>
+    <p th:text="100-${n2}">计算</p>
+</body>
+</html>

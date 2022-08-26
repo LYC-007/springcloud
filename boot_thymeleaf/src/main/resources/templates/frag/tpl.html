@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <p>在当前页面中定义模版,在当前页面中使用模版</p>
+  <p th:fragment="course">这是Thymeleaf课程</p>
+  <br/>
+  <p id="tplId">这是我们使用的id定义的模版</p>
+  <br/>
+  <br/>
+  <p>第一次使用模版</p>
+  <div th:insert="::course">
+      使用当前页面中的定义的模块
+  </div>
+  <p>第二次使用模版</p>
+  <div th:insert="~{::course}">
+      使用当前页面中的定义的模块
+  </div>
+  <br/>
+  <p>使用dom对象的id来引用模版</p>
+  <div th:insert="::#tplId"> </div>
+  <br/>
+  <br/>
+  <div th:replace="::course"></div>
+  <br/>
+  <br/>
+  <div th:include="::course"></div>
+</body>
+</html>

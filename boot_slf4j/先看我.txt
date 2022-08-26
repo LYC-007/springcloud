@@ -1,0 +1,29 @@
+在开发中，我们经常使用 System.out.println() 来打印一些信息，但是这样不好，因为大量的使用 System.out 会增加资源的消耗，而且部署在Linux上时只能通过日志来查看输出。
+我们实际项目中使用的是 slf4j 的 logback 来输出日志,slf4j+logback也是springboot的默认日志框架，当然logback也可以换成性能更好的log4j2框架。
+1.简介
+官网：https://www.slf4j.org/manual.html
+(1)简单日记门面(simple logging Facade for Java)SLF4J是为各种loging APIs提供一个简单统一的接口。
+
+(2)slf4j并不是一种具体的日志系统，而是一个用户日志系统的facade。
+
+(3)在部署时，选择不同的日志系统包，即可自动转换到不同的日志系统上。
+    如：选择JDK自带的日志系统，则只需要将slf4j-api-XXX.jar和slf4j-jdkXXX.jar放置到classpath中即可，若想换成log4j的日志系统，仅需要用slf4j-log4jXXx.jar替换slf4j-jdkXXX.jar即可
+
+(4)slf4j和log4j比较:
+    ①log4j看成是一个完整的日志库；而slf4j是一个日志库的规范接口,可以根据不同的日志包使用不同的日志库。
+    ②日志中需要传入参数时，log4j一般是使用字符串进行拼接的方式;
+    slf4j使用占位符，比字符串拼接更加高效。如logger.error("sql为 {} ",sql)。
+
+(5)slf4j日志级别
+    Slf4j日志级别,级别由低到高，设置的级别约低，打印的日志越多
+    ①trace: 一般不会使用，在日志里边也不会打印出来，最低的一个日志级别。
+    ②debug: 一般放于程序的某个关键点的地方，用于打印一个变量值或者一个方法返回的信息之类的信息
+    ③info 一般处理业务逻辑的时候使用，就跟 system.err打印一样，用于说明此处是干什么的。
+    ④warn：警告，不会影响程序的运行，但是值得注意。
+    ⑤error： 用户程序报错，必须解决的时候使用此级别打印日志。
+下面是几个日志概念介绍
+    1.slf4j：slf4j是对所有日志框架制定的一种规范、标准、接口，并不是一个框架的具体的实现，因为接口并不能独立使用，需要和具体的日志框架实现配合使用（如log4j、logback、log4j2）。
+    2.j.u.l：j.u.l是java.util.logging包的简称，是JDK在1.4版本中引入的Java原生日志框架。
+    3.log4j：log4j是apache实现的一个开源日志组件。
+    4.logback：logback同样是由log4j的作者设计完成的，拥有更好的特性，用来取代log4j的一个日志框架，是slf4j的原生实现。
+    5.log4j2：Log4j2是log4j 1.x和logback的改进版，据说采用了一些新技术（无锁异步等），使得日志的吞吐量、性能比log4j 1.x提高了10倍，并解决了一些死锁的bug，而且配置更加简单灵活。

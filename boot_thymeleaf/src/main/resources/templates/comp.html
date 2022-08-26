@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:if="10>5">10大于5</p>
+    <p th:if="10 &gt; 6">10大于6</p>
+    <p th:if="10 &gt; 2 and 5!=6"> 10大于2 ， 5不等于6</p>
+    <p th:if="not(false)"> not(false)=true</p>
+    <p th:if="!(false)"> !(false)=true</p>
+    <p th:if="${islogin}"> 已经登录系统</p>
+    <p th:if="not(${islogin})">没有登录</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>@{}链接地址</title>
+    <script src="@{/js/jquery.3.4.1.js}" type="text/javascript"></script>
+</head>
+<body>
+    <p>链接表达式</p>
+    <a th:href="@{mytest}">1.@{mytest}</a>
+    <br/>
+    <a th:href="@{./queryStudent(id=1001)}">2. ./queryStudent</a>
+    <br/>
+    <a th:href="@{../user/list(id=1002,age=20,email='zs@163.com')}">3. ../user/list</a>
+    <br/>
+    <a th:href="@{/user/home(id=1005,name=${myname})}">4.  /user/home</a>
+    <br/>
+    <a th:href="@{http://www.baidu.com}">5. http://www.baidu.com</a>
+</body>
+</html>

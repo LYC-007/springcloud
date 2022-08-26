@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <p> boolean 表达式</p>
+    <p th:text="true">true</p>
+    <p th:if="${married}">已婚了，married=true</p>
+    <p th:if="${age} &gt; 18">已经成年了</p>
+    <p th:if="${age} &lt; 18">没有成年</p>
+    <p th:if="${married} and ${age} &lt; 18">组合使用and</p>
+
+</body>
+</html>

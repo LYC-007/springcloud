@@ -1,0 +1,11 @@
+server:
+  port: 8000
+#暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  profiles:
+    active: dev

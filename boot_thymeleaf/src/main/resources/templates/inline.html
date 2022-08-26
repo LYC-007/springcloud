@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:inline="javascript">
+        var jsname = [[${name}]]
+        console.log("name==="+jsname);
+
+        var stus = [[${stulist}]]
+        for(var i=0;i<stus.length;i++){
+            var stu = stus[i];
+            console.log("i="+i+",name="+stu.name+",age="+stu.age);
+        }
+    </script>
+</head>
+<body>
+  <p>常用的方式</p>
+  <p th:text="${name}">常用的方式获取数据</p>
+  <br/>
+  <p>使用内联inline的方式</p>
+  <p>内联获取数据:[[${name}]]</p>
+
+  <br/>
+  <p th:utext="${info}">传统的方式utext</p>
+  <br/>
+  <p>内联方式使用utext: [(${info})]</p>
+  <br/>
+   <p>禁用内联</p>
+    <p th:inline="none">[[我是原样输出的数据]]</p>
+    <p th:inline="none">[(我是原样输出的数据2)]</p>
+</body>
+</html>
