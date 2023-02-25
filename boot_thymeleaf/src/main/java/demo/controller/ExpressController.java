@@ -1,8 +1,8 @@
 package demo.controller;
 
 
-import com.xufei.demo.domain.School;
-import com.xufei.demo.domain.Student;
+import demo.domain.School;
+import demo.domain.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

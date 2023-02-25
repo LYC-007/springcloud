@@ -28,7 +28,7 @@ import java.time.Duration;
 @EnableConfigurationProperties(CacheProperties.class)//如果你想要在核心配置文件中的配置生效，你就的添加这个注解
 //因为CacheProperties这个和配置文件绑定的类没有放到容器中，没有这个注解，在配置文件中写的配置项不会生效；
 //1、EnableConfigurationProperties作用：1.开启配置绑定功能2、EnableConfigurationProperties把这个CacheProperties这个组件自动注册到容器中
-@EnableCaching
+@EnableCaching  //开启缓存功能，配置类中需要加上这个注解，有了这个注解之后，spring才知道你需要使用缓存的功能，其他和缓存相关的注解才会有效
 @Configuration
 public class MyRedisConfig extends CachingConfigurerSupport {
     //lettuce和jedis是操作redis的底层客户端，但是Spring把lettuce和jedis再次封装成redisTemplate;

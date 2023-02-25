@@ -56,8 +56,7 @@ public class AdminController extends BaseController {
 
 
     /**
-     * 分页擦寻测试代码
-     * @return
+     * 分页查询测试代码
      */
     @GetMapping("/listAdmin")
     public TableDataInfo adminList() {   //这种方法需要配置 分页插件
@@ -67,8 +66,6 @@ public class AdminController extends BaseController {
         // 获取 User，sql 语句为 select * from tb_user
         // 因为已经注册了 PageHelper插件，所以 PageHelper会在原 sql 语句上增加 limit，从而实现分页
         List<Admin> list =adminMapper.findAll();
-
-
         PageInfo<Admin> adminPageInfo=new PageInfo<>(list);
 
         int pages = adminPageInfo.getPages();

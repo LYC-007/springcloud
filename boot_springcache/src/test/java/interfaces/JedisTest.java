@@ -1,6 +1,6 @@
 package interfaces;
 
-import com.xufei.demo.utils.JedisPoolUtils;
+import com.xufei.utils.JedisPoolUtils;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 

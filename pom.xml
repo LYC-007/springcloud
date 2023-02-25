@@ -14,6 +14,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <modules>
+        <module>boot_shardingsphere</module>
+        <module>sharding-jdbc-example</module>
         <module>cloud_common</module>
         <module>cloud_gateway</module>
         <module>cloud_openfeign</module>
@@ -21,5 +23,24 @@
         <module>cloud_provide</module>
         <module>boot_session</module>
         <module>boot_ruoyi</module>
+        <module>boot_quartz</module>
+        <module>boot_email</module>
+        <module>boot_tools</module>
+        <module>boot_design</module>
+        <module>boot_multidatabase</module>
+        <module>boot_transaction</module>
+        <module>boot_websocket</module>
+        <module>boot_netty</module>
+        <module>boot_api_limit</module>
+        <module>boot_distributed-lock</module>
+        <module>boot_api_limit_redis</module>
+        <module>boot_jpa</module>
+        <module>Boot_druid-monitor</module>
+        <module>boot_doc</module>
+        <module>boot_shardingsphere</module>
+        <module>boot_global_formatting</module>
+        <module>boot_OAtuth2.0</module>
+        <module>boot_data_masking</module>
+        <module>boot_basic-plus</module>
     </modules>
 </project>

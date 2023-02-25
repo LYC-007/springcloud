@@ -1,7 +1,6 @@
 package demo.controller;
 
-
-import com.xufei.demo.domain.MyStudent;
+import demo.domain.MyStudent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

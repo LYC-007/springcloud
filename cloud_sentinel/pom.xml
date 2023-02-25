@@ -19,7 +19,7 @@
             <artifactId>cloud_common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--SpringCloud ailibaba sentinel-datasource-nacos 后续做持久化用到-->
+        <!--SpringCloud ailibaba sentinel-com.datasource-nacos 后续做持久化用到-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>

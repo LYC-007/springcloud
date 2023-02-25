@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-/**Token的过期时间我们在生成token的时候写死了,如果你想要自动刷新token的过期时间，请结合SpringSession把token放到Redis里面,每次获取冲Redis里面获取
+/**
+ * Token的过期时间我们在生成token的时候写死了,如果你想要自动刷新token的过期时间，请结合SpringSession把token放到Redis里面,每次获取冲Redis里面获取
  *
  * 这里有两种方式实现,实际中只需要引入其中之一就行
  *     方式一:引入jwt  官方地址：https://github.com/auth0/java-jwt

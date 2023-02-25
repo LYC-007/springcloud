@@ -1,7 +1,13 @@
 # 数据源配置
 spring:
     datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
         druid:
+            # 主库数据源
+            url: jdbc:mysql://192.168.236.131:3306/girls?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+            username: root
+            password: 1234
             # 初始连接数
             initialSize: 5
             # 最小连接池数量

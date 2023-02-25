@@ -24,6 +24,128 @@ public class RedissonController {
     private RedisTemplate<String, String> stringRedisTemplate;
     @Autowired
     private RedissonClient redisson;
+    /**
+     * 红锁
+     */
+    public void redLock() {
+        RLock lock1 = redisson.getLock("order:A0001");
+        RLock lock2 = redisson.getLock("order:A0002");
+        RLock lock3 = redisson.getLock("order:A0003");
+        RLock redLock = redisson.getRedLock(lock1, lock2, lock3);
+        try {
+
+            if (redLock.tryLock(100, 10, TimeUnit.SECONDS)) {
+                //TODO something
+            }
+        } catch (Exception e) {
+            redLock.unlock();
+        } finally {
+            redLock.unlock();
+        }
+    }
+    /**
+     *  公平锁
+     */
+    public void fairLock() {
+        RLock fairLock = redisson.getFairLock("order:A0001");
+        /**
+         * 开启异步模式
+         */
+        fairLock.lockAsync();
+        try {
+
+            if (fairLock.tryLock(100, 10, TimeUnit.SECONDS)) {
+                //TODO something
+            }
+        } catch (Exception e) {
+            fairLock.unlock();
+        } finally {
+            fairLock.unlock();
+        }
+    }
+    /**
+     *  异步可重入锁-设置过期时间
+     */
+    public void reentrantLock2Async() {
+
+        RLock reentrantLock = redisson.getLock("order:A0001");
+        try {
+
+            // 100尝试加锁的时间 ，10锁过期时间
+            final RFuture<Boolean> booleanRFuture = reentrantLock.tryLockAsync(100, 10, TimeUnit.SECONDS);
+            if (booleanRFuture.get()) {
+                //TODO something
+            }
+        } catch (Exception e) {
+            reentrantLock.unlock();
+        } finally {
+            reentrantLock.unlock();
+        }
+    }
+    /**
+     *  可重入锁-设置过期时间
+     */
+    public String reentrantLock2(String order) {
+
+        RLock reentrantLock = redisson.getLock(order);
+        try {
+            // 100尝试加锁的时间 ，10锁过期时间
+            if (reentrantLock.tryLock(100, 10, TimeUnit.SECONDS)) {
+                //Thread.currentThread().sleep(10000);
+                System.out.println(order + "加锁成功");
+            } else {
+                System.out.println(order + "已加锁");
+            }
+        } catch (Exception e) {
+            reentrantLock.unlock();
+        } finally {
+            reentrantLock.unlock();
+        }
+        return "success";
+    }
+    /**
+     * 可重入锁-普通
+     */
+    @GetMapping("/reduceStock2")
+    @ResponseBody
+    public String reentrantLock(String order) {
+
+        RLock reentrantLock = redisson.getLock(order);
+        try {
+            if (reentrantLock.tryLock(100, 8, TimeUnit.SECONDS)) {
+                System.out.println(Thread.currentThread().getName() + "---" + order + "---" + "加锁成功");
+                return "YES";
+            } else {
+                System.out.println("线程 " + Thread.currentThread().getName() + "---" + order + "---" + "加锁失败");
+            }
+        } catch (Exception e) {
+            //reentrantLock.unlock();
+        } finally {
+            //reentrantLock.unlock();
+        }
+        return "NO";
+    }
+
+    /**
+     * 联锁
+     */
+    public void multiLock() {
+
+        RLock lock1 = redisson.getLock("order:A0001");
+        RLock lock2 = redisson.getLock("order:A0002");
+        RLock lock3 = redisson.getLock("order:A0003");
+        RLock multiLock = redisson.getMultiLock(lock1, lock2, lock3);
+        try {
+
+            if (multiLock.tryLock(100, 10, TimeUnit.SECONDS)) {
+                //TODO something
+            }
+        } catch (Exception e) {
+            multiLock.unlock();
+        } finally {
+            multiLock.unlock();
+        }
+    }
 
     @ResponseBody
     @GetMapping(value = "/hello")
