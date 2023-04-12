@@ -1,0 +1,45 @@
+官方文档介绍
+    If you want to display a custom HTML error page for a given status code, you can add a file to an /error directory.
+    Error pages can either be static HTML (that is, added under any of the static resource directories) or be built by using templates.
+    The name of the file should be the exact status code or a series mask.
+    如果要显示给定状态代码的自定义HTML错误页面，可以将文件添加到 /error 目录
+    错误页面可以是静态HTML（即添加到任何静态资源目录下），也可以使用模板来构建
+    文件名应为确切的状态代码或系列掩码
+src/
+ +- main/
+     +- java/
+     |   + <source code>
+     +- resources/
+         +- public/
+             +- error/
+             |   +- 404.html
+             +- <other public assets>
+要使用Thymeleaf模板映射所有5xx错误，您的目录结构应该如下所示:
+src/
+ +- main/
+     +- java/
+     |   + <source code>
+     +- resources/
+         +- templates/
+             +- error/
+             |   +- 5xx.html
+             +- <other templates>
+对于更复杂的映射，您还可以添加实现ErrorViewResolver接口的bean，如下面的示例所示:
+        public class MyErrorViewResolver implements ErrorViewResolver {
+            @Override
+            public ModelAndView resolveErrorView(HttpServletRequest request,
+                    HttpStatus status, Map<String, Object> model) {
+                // 根据请求或者状态码选择性的返回一个ModelAndView
+                return ...
+            }
+        }
+源码分析:原理都可以参照SpringBoot的自动配置，在Web的自动配置模块中有一个叫ErrorMvcAutoConfiguration的自动配置类
+该配置类主要给容器中添加了以下几个重要组件
+    DefaultErrorAttributes
+    BasicErrorController
+    ErrorPageCustomizer(一旦系统出现4XX或者5XX的错误，ErrorPageCustomizer 就会生效（定制错误的相应规则）)
+    DefaultErrorViewResolver
+        根据 DefaultErrorViewResolver 解析流程，结论就是：
+            1.有模板引擎的情况下，将错误页面放在 templates/error/ 即可
+            2.没有模板引擎的情况下，将错误页面放在 静态资源文件夹/error/ 即可
+            3.我们可以使用4xx，5xx作为页面的文件名来匹配这种类型所有的错误，精确优先（因为代码执行顺序优先）

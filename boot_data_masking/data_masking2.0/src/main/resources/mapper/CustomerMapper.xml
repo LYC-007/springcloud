@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xufei.mapper.CustomerMapper">
+
+    <resultMap id="BaseResultMapper" type="com.xufei.constant.Customer">
+        <id column="id" property="id"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="age" property="age"/>
+
+    </resultMap>
+
+    <insert id="addCustomer" keyProperty="id" useGeneratedKeys="true">
+        insert into customer(phone,address,age) values (#{customer.phone},#{customer.address},#{customer.age})
+    </insert>
+
+    <select id="findCustomer" resultMap="BaseResultMapper">
+        select * from customer
+        <where>
+            <if test="customer.address != null and customer.address != ''">
+                and exists(
+                select pd.id from participle p where p.id=c.id and p.text =#{customer.address}
+                )
+            </if>
+            <if test="customer.phone != null and customer.phone != ''">
+                and phone =#{customer.phone}
+            </if>
+            <if test="customer.age != null">
+                and age =#{customer.age}
+            </if>
+            <if test="customer.id != null">
+                and id =#{customer.id}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <insert id="batchInsert" keyProperty="id" useGeneratedKeys="true">
+        insert into customer(phone,address,age) values
+        <foreach collection="cuList"  item="one" separator=",">
+            (#{one.phone},#{one.address},#{one.age})
+        </foreach>
+    </insert>
+
+    <select id="findCustomerList" resultMap="BaseResultMapper">
+        select * from customer c
+        <where>
+            <if test="address != null and address != ''">
+                and exists(
+                select p.id from participle p where p.id=c.id and p.text = #{address}
+                )
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone =#{phone}
+            </if>
+            <if test="age != null">
+                and age =#{age}
+            </if>
+            <if test="id != null">
+                and id =#{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="findCustomerListMap" resultType="java.util.Map">
+        select phone,  from customer
+        <where>
+            <if test="address != null and address != ''">
+                and exists(
+                select p.id from participle p where p.id=c.id and p.text = #{address}
+                )
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone =#{phone}
+            </if>
+            <if test="age != null">
+                and age =#{age}
+            </if>
+            <if test="id != null">
+                and id =#{id}
+            </if>
+        </where>
+    </select>
+</mapper>

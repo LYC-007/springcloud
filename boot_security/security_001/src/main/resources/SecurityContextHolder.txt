@@ -1,0 +1,42 @@
+SecurityContextHolder：用于存储安全上下文SecurityContext信息，而这个SecurityContexr进一步持有Authentication 即代表的是当前的用户的所有信息：该用户是谁，是否已经被认证，
+拥有哪些角色这些信息都被保存在Anthentication中。
+SecurityContextHolder默认使用ThreadLocal 策略来存储认证信息，也就是说这是一种线程绑定信息的策略，Spring Security在用户登录时自动绑定认证信息到当前的线程，
+在用户退出时，自动清除当前线程的认证信息。
+
+
+package org.springframework.security.core;
+public interface Authentication extends Principal, Serializable {
+   //权限   集合中放的 是GrantedAuthority的子类  SimpleGrantedAuthority
+   Collection<? extends  GrantedAuthority> getAuthorities();
+   Object getCredentials(); //获取凭证信息，也就是获取密码
+   Object getDetails(); //获取详细信息 比如ip adress等都保存在Details中
+   Object getPrincipal();  //获取主题Principal 用户的详细信息 一个Object对象
+   boolean isAuthenticated();//是否已认证
+   void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException; //set方法
+}
+package org.springframework.security.core;
+public interface GrantedAuthority extends Serializable {
+   String getAuthority();  //得到认证
+}
+
+package org.springframework.security.core.userdetails;
+public interface UserDetails extends Serializable {
+   Collection<? extends GrantedAuthority> getAuthorities();//权限标识集合
+   String getPassword(); //密码
+   String getUsername();  //用户名
+   boolean isAccountNonExpired();  //是否未过期
+   boolean isAccountNonLocked(); //是否未锁定
+   boolean isCredentialsNonExpired();  //凭证是否未过期
+   boolean isEnabled();  //是否可用
+}
+
+public interface UserDetailsService {
+ 	//通过username  查询 UserDetails
+   UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+}
+
+public interface AuthenticationManager {
+    //authenticate鉴定   对传入的authentication进行认证
+   Authentication authenticate(Authentication authentication) throws AuthenticationException;
+}
+

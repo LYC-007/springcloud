@@ -1,0 +1,10 @@
+官方文档:
+Spring Boot supports both static and templated welcome pages. It first looks for an index.html file in the configured static content locations.
+If one is not found, it then looks for an index template. If either is found, it is automatically used as the welcome page of the application.
+Spring Boot同时支持静态和模板化欢迎页面。它首先在配置的静态内容位置中查找index.html文件。
+如果没有找到索引模板，则查找索引模板。如果找到任何一个，它将自动用作应用程序的欢迎页面
+
+
+
+WebMvcAutoConfiguration里面的静态内部类EnableWebMvcConfiguration的WelcomePageHandlerMapping方法里面调用getWelcomePage（）的返回对应由 this.mvcProperties.getStaticPathPattern()来处理
+即所有静态资源文件夹下的index.html，都被/**映射，即localhost:8080 -> 找index页面

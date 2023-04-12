@@ -1,0 +1,49 @@
+FileUpload包可以很容易地添加强大的，高性能，文件上传到你的Servlet的Web应用程序的能力。
+使用commons-fileupload的要求:
+        1.method方法必须是POST，不能是GET
+        2.新加一个属性enctype，值为”multipart/form-data”
+        3.文件表单项<input>的类型为file，即type=”file”
+导入依赖:
+        commons-fileupload.jar：这是一个核心 jar包，实现文件上传的核心类及方法都在这里面。
+        commons-io.jar：这是一个依赖 jar包，是为了辅助 commons-fileupload 包，此包主要是进行 IO操作的，是 commons-fileupload 的依赖包
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+common-fileupload 包中三大核心类:
+        1）DiskFileItemFactory类作用：磁盘文件工厂类，它还可以设置缓冲区大小以及设置临时保存位置。默认缓存大小是  10240(10k).临时文件默认存储在系统的临时文件目录下.
+                setSizeThreshold( int sizeThreshold ) ;设置缓冲区大小，默认sizeThreshold的大小为：10240（10KB）。
+                setRepository( File repository );设置临时文件的保存位置，如果不设置，repository为系统的临时目录。
+                DiskFileItemFactory(); 构造方法，缓冲区大小为默认sizeThreshold和临时文件为目录为默认repository的磁盘文件工厂类。
+                DiskFileItemFactory( int SizeThreshold , File repository );构造方法，指定缓冲区大小和指定临时文件的磁盘文件工厂类。sizeThreshold :缓存大小 ,repository:临时文件存储位置
+        2）ServletFileUpload类作用：文件上传类，实现上传的一些实用方法的集合。
+                List<FileItem> parseRequest( HttpSevletRequest request );解析request对象，获取表单中的所有数据信息，并返回一个List<FileItem>集合，其中每个FileItem就是一个表单数据项信息。
+                boolean isMultipartContext( HttpServletRequest request );根据请求对象来判断是普通表单，还是文件上传表单，如果是文件上传表单，则返回true，否则false。
+                setFileSizeMax( long fileSizeMax ); 设置单个文件的上传的大小上限。
+                setSizeMax( long sizeMax ); 设置总文件上传的大小上限。
+                setHeaderEncoding( Charset charset); 解决上传文件中的文件名中文乱码的问题。设置转换时所使用的字符集编码
+                static final boolean isMultipartContent(HttpServletRequest request)	判断请求提交的方式是否是“multipart/form-data”类型
+                ServletFileUpload( DiskFileItemFactory factory ); 构造方法，指定磁盘文件工厂类，并使用factory指定的缓冲区大小和临时文件。
+        3）FileItem类作用：表单数据项类，保存了表单数据项的所有信息，以下是完整的 FileItem类对象信息:
+                普通数据项： name=null, StoreLocation=XXX.tmp, size=5 bytes, isFormField=true, FieldName=username
+                文件数据项： name=要要.jpg, StoreLocation=XXX.tmp, size=8739 bytes, isFormField=false, FieldName=file2
+                isFormField();// 判断是否为普通数据项。判断FileItem对象所封装的数据类型，普通表单字段返回true，文件表单字段返回false
+                String getFieldName(); // 获取该表单数据项的名称。即：<input>标签中的name属性。
+                String getString( String encoding ); // 以指定的编码格式解析该表单数据项的值。即：<input>标签中的value属性。
+                String getName();// 获取上传文件中的文件名,普通表单字段调用此方法返回null
+                getInputStream()；// 获取上传文件的内容的输入流，使用文件复制就能完成文件的上传。
+                delete();// 删除临时文件。
+                long getSize()	返回单个上传文件的字节数
+SpringBoot关于文件上传的配置:
+        spring.servlet.multipart.enabled：表示是否开启文件上传支持，默认为 true
+        spring.servlet.multipart.file-size-threshold：表示文件写入磁盘的阀值，默认为 0
+        spring.servlet.multipart.location：表示上传文件的临时保存位置
+        spring.servlet.multipart.max-file-size：表示上传的单个文件的最大大小，默认为 1MB
+        spring.servlet.multipart.max-request-size：表示多文件上传时文件的总大小，默认为 10MB
+        spring.servlet.multipart.resolve-lazily：表示文件是否延迟解析，默认为 false

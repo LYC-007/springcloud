@@ -1,0 +1,24 @@
+rules:
+  sharding:
+    tables:
+      #配置表的规则   创建  12 张表按每个月分片
+      t_order:
+        actual-data-nodes: dbsource-0.t_order_2021_$->{['01','02','03','04','05','06','07','08','09','10','11','12']}
+        #分表策略
+        table-strategy:
+          #标准策略
+          standard:
+            sharding-column: order_time
+            sharding-algorithm-name: table-inline
+    #分片算法
+    sharding-algorithms:
+      table-inline:
+        type: INTERVAL
+        props:
+          datetime-pattern: yyyy-MM-dd HH:mm:ss
+          datetime-lower: 2021-01-01 00:00:00
+          datetime-upper: 2022-01-01 00:00:00
+          sharding-suffix-pattern: yyyy_MM
+          datetime-interval-amount: 1
+          datetime-interval-unit: MONTHS
+          #注意：如果时间范围超过 配置的上限和下限将无法分片,可能会报错

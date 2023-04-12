@@ -1,0 +1,65 @@
+server:
+  port: 8030
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+  shardingsphere:
+    #打印sql
+    datasource:
+      # 数据源名称集合
+      names: master,slaver
+      #主库
+      master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.236.133:3307/mysql_demo?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=GMT%2b8&characterEncoding=utf8&connectTimeout=1000&socketTimeout=15000&autoR
+        username: root
+        password: root
+        pool-name: MyHikariCP_1
+        minimum-idle: 10
+        maximum-pool-size: 30
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+      #从库
+      slaver:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.236.131:3317/mysql_demo?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=GMT%2b8&characterEncoding=utf8&connectTimeout=1000&socketTimeout=15000&autoR
+        username: root
+        password: root
+        pool-name: MyHikariCP_2
+        minimum-idle: 10
+        maximum-pool-size: 30
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+    sharding:
+      master-slave-rules:
+        # 类型是静态还是动态
+        type: static
+        master-slave-group:
+          # 指定主节点名字        写操作
+          master-datasource-name: master
+          # 指定从节点名字,多个读节点用逗号分开  读操作
+          slave-data-source-names: slaver
+    masterslave:
+      #由于我的就一个从库 所以就不设置相关算法了 如果多个从库 slaveDataSourceNames: slave,slave1 #以逗号分割
+      # 从库查询数据的负载均衡算法 目前有2种算法 round_robin（轮询）和 random（随机）
+      # 算法接口 org.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithm
+      # 实现类 RandomMasterSlaveLoadBalanceAlgorithm 和 RoundRobinMasterSlaveLoadBalanceAlgorithm
+      # 配置从库选择策略，提供轮询与随机，这里选择用轮询
+
+      #这里只有一个slaver  所以不需要设置负载均衡算法
+      load-balance-algorithm-type: round_robin
+    #打印sharding的日志
+    props:
+      sql:
+        show: true

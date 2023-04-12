@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: shardingjdbcDemo
+  main:
+    allow-bean-definition-overriding: true
+
+  shardingsphere:
+    #数据源信息
+    datasource:
+      #名称为dbsource-0的数据源
+      dbsource-0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/db1?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+      names: dbsource-0
+    #规则的配置
+    rules:
+      sharding:
+        tables:
+          #配置表的规则
+          t_order:
+            actual-data-nodes: dbsource-0.t_order_$->{0..1}
+            #分表策略
+            table-strategy:
+              #标准策略
+              standard:
+                sharding-column: city
+                sharding-algorithm-name: table-inline
+
+
+        #分片算法
+        sharding-algorithms:
+          table-inline:
+            type: HASH_MOD
+            props:
+              sharding-count: !!str 2 #这里加!!str 是以为解析的时候会有问题，这里必须指定字符串
+
+    props:
+      sql-show: true
+      sql-comment-parse-enabled: true
+
+
+

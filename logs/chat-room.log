@@ -1,0 +1,14 @@
+2023-02-07 10:17:18,506 [main] INFO  com.chaofan.websocket.WebsocketApplication [50]: [Starting WebsocketApplication on XuFei with PID 10740 (E:\Java_Project\springcloud\boot_websocket\chat_room2\target\classes started by luoya in E:\Java_Project\springcloud)]
+2023-02-07 10:17:18,521 [main] DEBUG com.chaofan.websocket.WebsocketApplication [53]: [Running with Spring Boot v2.0.3.RELEASE, Spring v5.0.7.RELEASE]
+2023-02-07 10:17:18,526 [main] INFO  com.chaofan.websocket.WebsocketApplication [659]: [No active profile set, falling back to default profiles: default]
+2023-02-07 10:17:27,757 [main] INFO  com.chaofan.websocket.WebsocketApplication [59]: [Started WebsocketApplication in 12.554 seconds (JVM running for 20.403)]
+2023-02-07 10:17:35,162 [main] DEBUG com.chaofan.websocket.Config.DownloadBingRunner [23]: [本次同步了14张壁纸！]
+2023-02-07 10:17:35,168 [main] INFO  com.chaofan.websocket.WebsocketApplication [23]: [
+[----------------------------------------------------------]
+	聊天室启动成功！点击进入:	http://192.168.236.1:18011
+[----------------------------------------------------------]
+2023-02-07 10:17:47,321 [http-nio-18011-exec-8] DEBUG com.chaofan.websocket.Web.MyWebSocket [54]: [---------------------成功与0建立连接---------------------]
+2023-02-07 10:18:00,007 [pool-2-thread-1] DEBUG com.chaofan.websocket.Config.QuartzService [29]: [开始查询需要删除的图片。。。。。。。。。。]
+2023-02-07 10:18:00,009 [pool-2-thread-1] DEBUG com.chaofan.websocket.Config.QuartzService [43]: [删除任务执行完毕，共删除0张图片]
+2023-02-07 10:19:00,004 [pool-2-thread-1] DEBUG com.chaofan.websocket.Config.QuartzService [29]: [开始查询需要删除的图片。。。。。。。。。。]
+2023-02-07 10:19:00,005 [pool-2-thread-1] DEBUG com.chaofan.websocket.Config.QuartzService [43]: [删除任务执行完毕，共删除0张图片]

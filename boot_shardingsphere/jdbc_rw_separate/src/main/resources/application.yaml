@@ -1,0 +1,110 @@
+server:
+  port: 8001
+
+mybatis-plus: #mybatis
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 查看生产的sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler   #通用枚举的默认处理器
+  global-config:
+    db-config:
+      #逻辑删除
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  mapper-locations: classpath:mapper/*Mapper.xml
+spring:
+  shardingsphere:
+    # 属性配置
+    props:
+      # 显示修改以后的sql语句
+      sql-show: true
+    ## 数据源配置
+    datasource:
+      names: master,slave1,slave2
+      # 主数据源
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.236.133:3307/mysql_demo?userUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+        minimum-idle: 10
+        maximum-pool-size: 30
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+      # 读数据源
+      slave1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.236.133:3317/mysql_demo?userUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+        minimum-idle: 10
+        maximum-pool-size: 30
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+      slave2:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.236.133:3327/mysql_demo?userUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+        minimum-idle: 10
+        maximum-pool-size: 30
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+    ##读写分离配置
+    rules:
+      readwrite-splitting:
+        data-sources:
+          ## 读写分离名称
+          mydatasource:
+            type: Static
+            ## 写数据源名称
+            props:
+              write-data-source-name: master
+              ## 读数据源名称,多个使用","分开
+              read-data-source-names: slave1,slave2
+              ## 负载均衡算法名称  想要那种就输入下面的 名称
+            load-balancer-name: weight-alg
+              ## 负载均衡算法配置
+        load-balancers:
+          # 轮询
+          # 负载均衡算法名称  com.xufei.rw.loadbalance.RoundRobinReplicaLoadBalanceAlgorithm
+          round-alg:
+            type: ROUND_ROBIN
+          # 随机
+          random-alg:
+            type: RANDOM
+          # 权重，我们在配置权重的时候必须配置各个 slave 的权重值，值的数据类型为 double
+          weight-alg:
+            type: WEIGHT
+            props:
+              slave1: 1.0
+              slave2: 2.0
+          # CUSTOM是我们自定义的负载均衡算法  系统自带:RANDOM
+          custom-alg:
+            type: CUSTOM
+      sharding:
+        tables:
+          user:   # 逻辑表名称
+            # 数据节点：数据源$->{0..N}.逻辑表名$->{0..N} 由数据源名 + 表名组成（参考 Inline 语法规则）
+            # actual-data-nodes: ds0.order$->{0..1}  #只分表不分库
+            actual-data-nodes: mydatasource.user  #不分库也不分表
+            key-generate-strategy: # 主键生成策略
+              column: id # 分布式序列列名称
+              key-generator-name: snow # 分布式序列算法名称
+          key-generators: # 分布式序列策略配置
+            snow:
+              type: SNOWFLAKE

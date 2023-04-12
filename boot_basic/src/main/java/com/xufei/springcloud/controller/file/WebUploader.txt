@@ -1,0 +1,19 @@
+WebUploader 是由百度公司团队开发的一个以 HTML5 为主，FLASH 为辅的现代文件上传组件。
+官网地址：http://fex.baidu.com/webuploader/
+功能特点:
+    1.分片、并发：WebUploader 采用大文件分片并发上传，极大的提高了文件上传效率。
+    2.预览、压缩：WebUploader 支持常用图片格式 jpg,jpeg,gif,bmp,png 预览与压缩，节省网络数据传输。
+    3.多途径添加文件：支持文件多选，类型过滤，拖拽(文件 & 文件夹)，图片粘贴功能。
+    4.HTML5 & FLASH：兼容主流浏览器，接口一致，实现了两套运行时支持，用户无需关心内部用了什么内核。
+    5.MD5 秒传：当文件体积大、量比较多时，支持上传前做文件 md5 值验证，一致则可直接跳过。
+    6.易扩展、可拆分：采用可拆分机制, 将各个功能独立成了小组件，可自由搭配。
+
+
+安装配置
+（1）首先我们访问如下地址下载最新版本，并解压放到我们的项目文件夹中。下载地址：https://github.com/fex-team/webuploader/releases
+（2）接着在页面中将 webuploader.js 和 webuploader.css 这两个文件引入进来;注意：由于 webuploader 依赖 jQuery，所以我们项目中还需将 jQuery 引入。
+    <link rel="stylesheet" type="text/css" href="js/webuploader.css"><!--引入CSS-->
+    <script src="js/jquery-1.11.1.min.js"></script><!--引入JS-->
+	<script src="js/webuploader.js"></script>
+（3）而在初始化 WebUploader 时，我们还需要指定 Uploader.swf 的地址。具体配置方法见下面的样例代码部分。
+    注意：Uploader.swf 是在当浏览器不支持H5的情况下的备用方案。我们只需配置好路径即可，具体采用哪种方案 WebUploader 会自动选择，同时对用户体验方面也没任何区别。

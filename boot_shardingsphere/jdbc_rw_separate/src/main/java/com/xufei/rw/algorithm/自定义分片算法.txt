@@ -1,0 +1,9 @@
+Sharding jdbc为我们实际提供了5种的分库分表策略实现方式。如下：
+
+标准分片策略 （PreciseShardingAlgorithm、RangeShardingAlgorithm）
+复合分片策略 （ComplexKeysShardingAlgorithm）
+Hint分片策略  （HintShardingAlgorithm）
+行表达式分片策略
+不分片策略
+
+

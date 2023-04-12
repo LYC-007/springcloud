@@ -1,0 +1,82 @@
+0.@Component+@PropertySource+@ConfigurationProperties+自定义properties配置文件
+        @Data
+        @Component
+        @PropertySource(value = {"classpath:student.properties"})
+        @ConfigurationProperties(prefix = "student")
+        public class Students{
+            private String name;
+            private String sex;
+        }
+        配置文件(student.properties):
+        student.name=Jack
+        student.sex=男
+1.@ConfigurationProperties+@Component+核心配置文件application.yml
+        @Component
+        @ConfigurationProperties(prefix = "demo")
+        @Data
+        public class Demo {
+            private String userName;
+            private String age;
+        }
+        application.yml配置文件:
+        demo:
+            user-name: Jack
+            age: 18
+2.@EnableConfigurationProperties + @ConfigurationProperties + application.yml
+        @Component//或者使用@Configuration
+        @EnableConfigurationProperties(Demo.class)
+        public class DemoTest implements ApplicationRunner {
+            @Autowired
+            Demo demo
+
+            @Override
+            public void run(ApplicationArguments args) throws Exception {
+                System.out.println(demo);
+            }
+        }
+        @ConfigurationProperties(prefix = "demo")//表示当前JavaBean和SpringBoot核心配置文件中前缀为 “demo” 进行绑定
+        @Data
+        public class Demo {
+            private String userName;
+            private String age;
+        }
+        application.yml配置文件:
+        demo:
+            user-name: hello
+            age: 18
+3.@ImportResource+Spring的xml配置文件
+        @ImportResource("classpath:beans.xml")
+        public class ImportResourceConfig{
+        }
+
+        对上面的改造(配置路径动态化):
+        @ImportResource(value = {"${core}", "${bigdata}"})
+        public class ImportResourceConfig{
+        }
+        然后 application.yml 添加配置:
+        core: file:f:\java\applicationContext-core.xml
+        bigdata: file:f:applicationContext-core-bigdata.xml
+4.@Configuration+@Bean
+5.实现InitializingBean+@Component
+        @Component
+        public class ConstantPropertiesUtils implements InitializingBean {//InitializingBean:该接口当Spring加载之后，就会初始化下面的值，最会会执行afterPropertiesSet()方法
+            @Value("${aliyun.oss.file.endpoint}") //读取配置文件里面的值    @Value
+            private String endpoint;
+            public static String END_POINT;
+            @Override
+            public void afterPropertiesSet() throws Exception {
+                END_POINT=endpoint;
+            }
+        }
+6.@Component+@PropertySource+@Value+自定义properties配置文件
+        @Component
+        @PropertySource("classpath:website.properties")
+        public class ReadByPropertySourceAndValue {
+            @Value("${demo.name}")
+            private String name;
+            @Value("${demo.sex}")
+            private String sex;
+        }
+        配置文件(website.properties):
+        demo.name=Jack
+        demo.sex=女

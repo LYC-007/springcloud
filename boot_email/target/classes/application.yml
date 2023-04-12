@@ -1,0 +1,8 @@
+server:
+  port: 8001
+spring:
+  mail:
+    host: smtp.126.com #host配置的是提供邮件服务的主机协议，当前程序仅用于发送邮件，因此配置的是smtp的协议
+    username: pangqingyun@126.com
+    password: MZKOCKNHMKYZNMBX #password并不是邮箱账号的登录密码，是邮件供应商提供的一个加密后的密码
+

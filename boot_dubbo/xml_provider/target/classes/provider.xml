@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!--详细配置请查看官网:https://cn.dubbo.apache.org/zh/docs3-v2/java-sdk/reference-manual/config/properties/#registry-->
+
+    <!-- 1、指定当前服务/应用的名字（同样的服务名字相同，不要和别的服务同名） -->
+    <dubbo:application name="provider"/>
+
+    <!-- 2、指定注册中心的位置 -->
+    <!-- <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry> -->
+    <dubbo:registry protocol="zookeeper" address="192.168.236.131:2181"/>
+    <!--配置的是 N/A 表示由 dubbo自动分配地址;不通过注册中心,也就是点对点的直连方式-->
+    <!--<dubbo:registry address="N/A" />-->
+
+    <!-- 3、指定通信规则:服务发布的时候 dubbo 依赖什么协议，可以配置dubbo、webservice、http等协议-->
+    <dubbo:protocol name="dubbo" port="20882"/>
+
+    <!-- 4、暴露服务   ref：指向服务的真正的实现对象 -->
+    <dubbo:service interface="com.xufei.common.service.ProviderService" ref="providerService00" timeout="1000" group = "lwb00" version="1.0.0">
+        <dubbo:method name="getUserAddressList" timeout="1000"/>
+    </dubbo:service>
+
+    <!-- 4、暴露服务   ref：指向服务的真正的实现对象 -->
+    <dubbo:service interface="com.xufei.common.service.ProviderService" ref="providerService01" timeout="1000" group = "lwb00" version="2.0.0">
+        <dubbo:method name="getUserAddressList" timeout="1000"/>
+    </dubbo:service>
+
+
+    <!--5、服务的实现-->
+    <bean id="providerService00" class="com.xufei.provicer.service.impl.ProviderServiceImpl"/>
+
+    <!--5、服务的实现-->
+    <bean id="providerService01" class="com.xufei.provicer.service.impl.ProviderServiceImpl01"/>
+
+
+    <!--6、连接监控中心 -->
+    <dubbo:monitor protocol="registry"/>
+    <!--统一设置服务提供方的规则  -->
+    <dubbo:provider timeout="1000"/>
+
+</beans>

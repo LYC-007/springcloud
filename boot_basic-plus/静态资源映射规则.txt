@@ -1,0 +1,28 @@
+官方文档介绍
+    By default, Spring Boot serves static content from a directory called /static (or /public or /resources or /META-INF/resources) in the classpath or from the root of the ServletContext.
+    It uses the ResourceHttpRequestHandler from Spring MVC so that you can modify that behavior by adding your own WebMvcConfigurer and overriding the addResourceHandlers method.
+    默认情况下，Spring Boot从类路径中的 /static 目录（或 /public 或 /resources或 /META-INF / resources）或ServletContext的根目录中提供静态内容
+    它使用Spring MVC中的ResourceHttpRequestHandler，以便您可以通过添加自己的WebMvcConfigurer并重写addResourceHandlers方法来修改该行为
+
+    By default, resources are mapped on /**, but you can tune that with the spring.mvc.static-path-pattern property.
+    For instance, relocating all resources to /resources/** can be achieved as follows：spring.mvc.static-path-pattern=/resources/**
+    默认情况下，资源映射在 /** 上，但是您可以使用 spring.mvc.static-path-pattern属性对其进行调整
+
+    例如，将所有资源重定位到 /resources/ ，可以如下实现：spring.mvc.static-path-pattern=/resources/
+WebMvcAutoConfiguration里面的静态内部类WebMvcAutoConfigurationAdapter的addResourceHandlers方法规定“/**”，都去以下四个路径下寻找资源，优先级由高到低:
+    classpath：/META-INF/resources/
+    classpath：/resources/
+    classpath：/static/
+    classpath：/public/
+    这几个文件夹我们就称为静态资源文件夹，你把你的静态资源只要保存在这几个文件夹里面，人家访问的时候呢，只要没有人处理，都会在这几个文件夹里面找资源;
+    WebProperties定义了上面四个路径  ,WebMvcProperties定义了“/**”
+
+
+
+
+
+第二种映射规则:
+In addition to the “standard” static resource locations mentioned earlier, a special case is made for Webjars content. Any resources with a path in /webjars/** are served from jar files if they are packaged in the Webjars format.
+如果 jar 文件以 Webjars 格式打包，则从jar文件提供带有 /webjars/** 路径的所有资源
+访问/webjars/**下面的所有资源都去classpath:/META-INF/resources/webjars/找资源
+webjars：以jar包的方式引入静态资源 https://www.webjars.org/

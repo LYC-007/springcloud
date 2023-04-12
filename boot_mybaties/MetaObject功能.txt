@@ -1,0 +1,20 @@
+MetaObject类相当于一个反射工具类，Mybatis在sql参数设置和结果集映射里经常使用到这个对象。
+
+映射是指结果集中的列填充至JAVA Bean属性。这就必须用到反射，而Bean的属性 多种多样的有普通属性、对象、集合、Map都有可能。
+为了更加方便的操作Bean的属性，MyBatis提供了MeataObject 工具类，其简化了对象属性的操作。
+
+MetaObject提供了一个工具类：SystemMetaObject,当调用SystemMetaObject获取MetaObject对象时，每次均new DefaultReflectorFactory()了一个反射工厂类。
+    示例: User user = new User();
+          MetaObject metaObject = SystemMetaObject.forObject(user);
+
+    但是推荐下面这种:
+        public class TestMetaObject {
+            private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
+            private static final ObjectWrapperFactory DEFAULT_OBJECT_WRAPPER_FACTORY = new DefaultObjectWrapperFactory();
+            private static final ReflectorFactory DEFAULT_REFLECTOR_FACTORY = new DefaultReflectorFactory();
+            public static void main(String[] args) {
+                //第一次读取
+                User user = new User();
+                MetaObject metaObject = MetaObject.forObject(user, DEFAULT_OBJECT_FACTORY, DEFAULT_OBJECT_WRAPPER_FACTORY, DEFAULT_REFLECTOR_FACTORY);
+            }
+        }

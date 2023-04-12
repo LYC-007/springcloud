@@ -1,0 +1,26 @@
+文档介绍
+If you want to keep those Spring Boot MVC customizations and make more MVC customizations (interceptors, formatters, view controllers, and other features),
+you can add your own @Configuration class of type WebMvcConfigurer but without@EnableWebMvc.
+如果您想保留那些 Spring Boot MVC 自定义，并进行更多的 MVC 自定义(拦截器、格式化器、视图控制器和其他特性)，
+您可以添加自己的类型为WebMvcConfigurer的@Configuration类，但不添加@EnableWebMvc
+If you want to take complete control of Spring MVC, you can add your own @Configuration annotated with @EnableWebMvc,
+or alternatively add your own @Configuration-annotated DelegatingWebMvcConfiguration as described in the Javadoc of @EnableWebMvc.
+如果您想完全控制Spring MVC，可以添加您自己的带有@EnableWebMvc注释的@Configuration，
+或者添加您自己的带有@Configuration注释的DelegatingWebMvcConfiguration，如@EnableWebMvc的Javadoc中所描述的那样.
+WebMvcConfigurer接口方法概览:
+         /* 拦截器配置 */
+        default void addInterceptors(InterceptorRegistry registry) {}
+        /*静态资源处理*/
+        default void addResourceHandlers(ResourceHandlerRegistry registry) {}
+        /** 解决跨域问题 **/
+        default void addCorsMappings(CorsRegistry registry) {}
+        /* 视图跳转控制器 */
+        default void addViewControllers(ViewControllerRegistry registry) {}
+        /*这里配置视图解析器*/
+        default void configureViewResolvers(ViewResolverRegistry registry) {}
+        /* 配置内容裁决的一些选项*/
+        default void configureContentNegotiation(ContentNegotiationConfigurer configurer) {}
+        /* 默认静态资源处理器 */
+        default void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {}
+
+

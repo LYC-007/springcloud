@@ -42,5 +42,6 @@
         <module>boot_OAtuth2.0</module>
         <module>boot_data_masking</module>
         <module>boot_basic-plus</module>
+        <module>boot_baidu-webuploader</module>
     </modules>
 </project>

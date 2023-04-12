@@ -1,0 +1,6 @@
+      <!-- Java压缩和解压 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.21</version>
+        </dependency>

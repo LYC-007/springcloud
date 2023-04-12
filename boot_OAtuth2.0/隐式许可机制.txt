@@ -1,0 +1,15 @@
+隐式许可机制的场景适用于没有后端服务的应用，举个例子来说的话就是在浏览器中执行，譬如说JavaScript应用。
+
+在这种情况下，第三方软件对于浏览器就没有任何保密的数据可以隐藏了，也不再需要应用密钥 app_secret 的值了，也不用再通过授权码 code 来换取访问令牌 access_token 的值了。
+因此，隐式许可授权流程的安全性会降低很多。
+
+这种场景下的授权，第三方软件可以直接使用注册时的 client_id来换回访问令牌 token 的值。
+
+
+前端应用直接获取 token，response_type 设置为 token，要求直接返回令牌，跳过授权码，WX授权通过后重定向到指定 redirect_uri 。
+
+https://wx.com/oauth/authorize?
+  response_type=token&
+  client_id=CLIENT_ID&
+  redirect_uri=http://juejin.im/callback&
+  scope=read

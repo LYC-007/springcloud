@@ -1,0 +1,15 @@
+OAuth2.0 的授权简单理解其实就是获取令牌（token）的过程，OAuth 协议定义了四种获得令牌的授权方式（authorization grant ）如下：
+    1.授权码（authorization-code）
+    2.隐藏式（implicit）
+    3.密码式（password）：
+    4.客户端凭证（client credentials）
+但值得注意的是，不管我们使用哪一种授权方式，在三方应用申请令牌之前，都必须在系统中去申请身份唯一标识：客户端 ID（client ID）和 客户端密钥（client secret）。这样做可以保证 token 不被恶意使用。
+
+下面我们会分析每种授权方式的原理，在进入正题前，先了解 OAuth2.0 授权过程中几个重要的参数：
+    1.response_type：code 表示要求返回授权码，token 表示直接返回令牌
+    2.client_id：客户端身份标识(比如:商家要进行微信登录，首先商家先到微信去申请一个client_id和client_secret以及设置好登录的redirect_uri地址)
+    3.client_secret：客户端密钥
+    4.redirect_uri：重定向地址
+    5.scope：表示授权的范围，read只读权限，all读写权限
+    6.grant_type：表示授权的方式，AUTHORIZATION_CODE（授权码）、password（密码）、client_credentials（凭证式）、refresh_token 更新令牌
+    7.state：应用程序传递的一个随机数，用来防止CSRF攻击。

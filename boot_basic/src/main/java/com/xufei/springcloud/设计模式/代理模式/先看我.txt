@@ -1,0 +1,6 @@
+实现分析
+1、FileUpload抽象接口,定义了文件上传方法，分别给它写了2种实现。
+2、AliyunOSSFileUpload是将文件上传到aliyunOSS，主要上传mp4和avi的视频大文件。
+3、FastdfsFileUpoad是将文件上传到FastDFS，主要上传png/jpg等图片小文件。
+4、FileUploadProxy是代理对象，供用户访问，调用了FileUpload的文件上传方法，为用户提供不同文件上传调用。
+5、FileController是控制器，用于接收用户提交的文件，并调用代理FileUploadProxy实现文件上传。

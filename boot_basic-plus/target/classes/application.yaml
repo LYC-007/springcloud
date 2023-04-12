@@ -1,0 +1,8 @@
+server:
+  error:
+    # 展示异常调用栈
+    include-stacktrace: always
+    # 展示异常类型信息
+    include-exception: true
+    # 展示错误信息
+    include-message: always

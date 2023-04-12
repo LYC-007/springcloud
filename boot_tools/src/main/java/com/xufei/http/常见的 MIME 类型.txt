@@ -1,0 +1,6 @@
+类型	描述	典型示例
+text	表示文件是普通文本，例如 HTML、CSS、JS 的源码文件	text/plain, text/html, text/css, text/javascript
+image	表示某种图像，但不包括视频。例如 gif、png、jpg 等格式的图片	image/gif, image/png, image/jpeg, image/bmp, image/webp, image/x-icon, image/vnd.microsoft.icon
+audio	表示某种音频文件	audio/midi, audio/mpeg, audio/webm, audio/ogg, audio/wav
+video	表示某种视频文件	video/webm, video/ogg
+application	表示某种二进制数据	application/octet-stream, application/pkcs12, application/vnd.mspowerpoint, application/xhtml+xml, application/xml, application/pdf

@@ -1,0 +1,31 @@
+Exeutor发起sql执行任务
+1、先调用statementHandler中的prepare（）进行SQL的编译
+2、然后调用statementHandler中的parameterize（）设置参数
+    2.1、这里其实真正设置参数的是ParameterHandler中的setparameters（）方法，该方法与typeHandler进行参数类型的转换
+3、然后执行query/update方法，这里使用ResultSetHandler进行结果的组装工作
+    3.1、这里ResultSetHandler又与typeHandler、ObjectFactory配合工作共同完成结果的组装工作
+mybatis中一条SQL和它相关的配置信息由三部分组成:
+    1.MappedStatement：sql的ID、缓存信息、resultType、ParameterType、resultMap等信息
+    2.Sqlsource：是MappedStatement的一个属性,是一个接口，主要提供BoundSql
+    3.BoudSql：是建立SQL和参数的地方，有三个主要属性，ParameterMappings、ParameterObject和sql，这个对象比较重要，我们通常使用插件就是对它进行拦截；
+
+
+SqlSessionFactory是MyBatis的关键对象,它是个单个数据库映射关系经过编译后的内存镜像.
+SqlSessionFactory对象的实例可以通过SqlSessionFactoryBuilder对象类获得,而SqlSessionFactoryBuilder则可以从XML配置文件或一个预先定制的Configuration的实例构建出SqlSessionFactory的实例.
+每一个MyBatis的应用程序都以一个SqlSessionFactory对象的实例为核心.同时SqlSessionFactory也是线程安全的,SqlSessionFactory一旦被创建,应该在应用执行期间都存在.
+在应用运行期间不要重复创建多次,建议使用单例模式.SqlSessionFactory是创建SqlSession的工厂.
+
+SqlSession是MyBatis的关键对象,是执行持久化操作的独享,类似于JDBC中的Connection
+它是应用程序与持久层之间执行交互操作的一个单线程对象,也是MyBatis执行持久化操作的关键对象.
+SqlSession对象完全包含以数据库为背景的所有执行SQL操作的方法,它的底层封装了JDBC连接,可以用SqlSession实例来直接执行被映射的SQL语句.
+每个线程都应该有它自己的SqlSession实例.SqlSession的实例不能被共享,同时SqlSession也是线程不安全的,绝对不能讲SqlSeesion实例的引用放在一个类的静态字段甚至是实例字段中.
+也绝不能将SqlSession实例的引用放在任何类型的管理范围中,比如Servlet当中的HttpSession对象中.使用完SqlSeesion之后关闭Session很重要,应该确保使用finally块来关闭它.
+
+
+
+
+
+总结：
+    1.Mybatis四大组件构成mybatis的整个生命周期；
+    2.sqlSession四大对象，描述SQL执行的流程；
+    3.映射器组成部门，描述最底层SQL执行的细节；

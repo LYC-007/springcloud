@@ -1,0 +1,9 @@
+
+
+如果不使用SpringData的方法，想要自己实现，该怎么办呢？
+    1.定义一个接口：声明要添加的, 并自实现的方法(UserCustomRepository)
+    2.提供该接口的实现类：类名需在要声明的 UserCustomRepository 后添加 Impl, 并实现方法声明 UserCustomRepository 接口, 并继承声明的接口的方法
+经过实践发现:
+    1.XXXRepositoryImpl 与XXXRepository前面的名字必须相同，后面的也需要按照规则写
+    2.若将XXXRepositoryImpl与XXXRepository接口放在同意包下，XXXRepositoryImpl不需要添加@Repository注解;
+    3.当XXXRepositoryImpl与XXXRepository接口不在同一包下，需要在在XXXRepositoryImpl类上加@Repository注解进行修饰

@@ -1,0 +1,73 @@
+
+Jpa本身还提供了一些自定义声明方法的规则，例如：在接口中使用关键字findBy、readBy、getBy,queryBy,countBy作为方法名的前缀，拼接实体类中的属性字段（首字母大写），
+并可选择拼接一些SQL关键字来组合成一个查询方法，例如，对于用户实体，关键字可以这样使用：
+
+1.And，如：findByIdAndName(Long id, String name);
+2.Or,如：findByIdOrName(Long id, String name);
+3.Between,如：findByCreateDateBetween(Date start, Date end);
+4.LessThan,如：findByCreateDateLessThan(Date start);
+5.GreaterThan,如：findByCreateDateGreaterThan(Date start);
+6.IsNull,如：findByNameIsNull();
+7.IsNotNull,与上等价
+8.Like,如：findByNameLike(String name);
+9.NotLike:与上等价
+10.OrderBy,如：findByNameOrderByIdAsc(String name);
+11.Not,如：findByNameNot(String name);
+12.In,如：findByNameIn(Collection<String> nameList);
+13.NotIn,与上等价。
+加入说上面这些还是不能够满足你的业务需求，你同样可以写一个自定义的方法，使用@Query注解+HQL语句实现你想要的效果。
+
+自定义方法在方法上标注@Query来指定本地查询，参数nativeQuery默认为false：
+    1.nativeQuery=false时，value参数写的是JPQL，JPQL是用来操作model对象的
+        @Query(value="select s from Spu s where s.title like %?1" )
+        public List<Spu> findByTitle(String title);
+    2.nativeQuery=true时，value参数写的是原生sql
+        @Query(value="select * from spu s where s.title like %?1",nativeQuery=true )
+        public List<Spu> findByTitle(String title);
+    3.使用@Param命名化参数
+        @Query("select u from User u where u.username = :username and u.password = :password")
+        User getByUsernameAndPassword(@Param("username")String username, @Param("password") String password);
+
+一、HQL的定义
+    Hibernate 查询语言（HQL）是一种面向对象的查询语言，类似于 SQL，但不是去对表和列进行操作，而是面向对象和它们的属性。
+
+二、HQL
+    1.HQL里面的类名和属性名区分大小写，但关键字不区分大小写
+    2. ? 从下标0开始计算位置
+    3. HQL支持:命名参数
+    4. HQL是面向对象的查询语言
+
+三、SQL
+    1.SQL里面的表名和列名不区分大小写
+    2.? 从顺序1开始计算位置
+    3.SQL不支持:命名参数
+    4.SQL是面向结构的查询语言
+
+
+
+示例:
+Keyword	            Sample	                                      JPQL snippet
+And	                findByLastnameAndFirstname	                  … where x.lastname = ?1 and x.firstname = ?2
+Or	                findByLastnameOrFirstname	                  … where x.lastname = ?1 or x.firstname = ?2
+Is,Equals	        findByFirstnameIs,findByFirstnameEquals	      … where x.firstname = ?1
+Between	            findByStartDateBetween	                      … where x.startDate between ?1 and ?2
+LessThan	        findByAgeLessThan	                          … where x.age < ?1
+LessThanEqual	    findByAgeLessThanEqual	                      … where x.age ⇐ ?1
+GreaterThan	        findByAgeGreaterThan	                      … where x.age > ?1
+GreaterThanEqual	findByAgeGreaterThanEqual	                  … where x.age >= ?1
+After	            findByStartDateAfter	                      … where x.startDate > ?1
+Before	            findByStartDateBefore	                      … where x.startDate < ?1
+IsNull	            findByAgeIsNull	                              … where x.age is null
+IsNotNull,NotNull	findByAge(Is)NotNull	                      … where x.age not null
+Like	            findByFirstnameLike	                          … where x.firstname like ?1
+NotLike	            findByFirstnameNotLike	                      … where x.firstname not like ?1
+StartingWith	    findByFirstnameStartingWith 	              … where x.firstname like ?1 (parameter bound with appended %)
+EndingWith	        findByFirstnameEndingWith	                  … where x.firstname like ?1 (parameter bound with prepended %)
+Containing	        findByFirstnameContaining	                  … where x.firstname like ?1 (parameter bound wrapped in %)
+OrderBy	            findByAgeOrderByLastnameDesc	              … where x.age = ?1 order by x.lastname desc
+Not	                findByLastnameNot	                          … where x.lastname <> ?1
+In	                findByAgeIn(Collection ages)	              … where x.age in ?1
+NotIn	            findByAgeNotIn(Collection age)	              … where x.age not in ?1
+TRUE	            findByActiveTrue()	                          … where x.active = true
+FALSE	            findByActiveFalse()	                          … where x.active = false
+IgnoreCase	        findByFirstnameIgnoreCase	                  … where UPPER(x.firstame) = UPPER(?1)

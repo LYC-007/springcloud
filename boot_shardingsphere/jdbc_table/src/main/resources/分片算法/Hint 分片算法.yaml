@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: shardingjdbcDemo
+  main:
+    allow-bean-definition-overriding: true
+
+  shardingsphere:
+    #数据源信息
+    datasource:
+      #名称为dbsource-0的数据源
+      dbsource-0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/db1?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+      names: dbsource-0
+    #规则的配置
+    rules:
+      sharding:
+        tables:
+          #配置表的规则
+          t_order:
+            actual-data-nodes: dbsource-0.t_order_$->{0..1}
+            #分表策略
+            table-strategy:
+              #多分片键策略
+              hint:
+                sharding-algorithm-name: table-inline
+        #分片算法
+        sharding-algorithms:
+          table-inline:
+            type: HINT_INLINE
+            props:
+              algorithm-expression: t_order_$->{value % 2}
+
+    props:
+      sql-show: true
+      sql-comment-parse-enabled: true
+
+
+public void hintInlineInsert() {
+  HintManager hintManager = HintManager.getInstance();
+  for (int i = 0; i < 10; i++) {
+  hintManager.addTableShardingValue("t_order",i);;
+  Order order = new Order();
+  order.setOrderId(Long.valueOf(i));
+  order.setUserId(Long.valueOf(i));
+  order.setOrderPrice(new BigDecimal("1"));
+  order.setOrderTime(LocalDateTime.now());
+  order.setCity("北京");
+  orderMapper.insert(order);
+  //执行完毕需要清空
+  hintManager.clearShardingValues();
+  }
+}
+

@@ -1,0 +1,29 @@
+如何使用审计:
+    1.实体类上添加 @EntityListeners(AuditingEntityListener.class)
+    2.在需要的字段上加上 @CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy 等注解。
+        @CreateDate:表示该字段是创建时间字段，在这个实体被insert的时候，会自动填充创建的时间，不用手动填充该字段。
+        @CreatedBy:表示该字段是创建人字段，在这个实体被insert的时候，会自动填充创建人字段，不用手动填充。
+        @LastModifiedDate、@LastModifiedBy同理。
+    3.在Xxx Application 启动类上添加 @EnableJpaAuditing
+    4.实现 AuditorAware 接口来返回你需要插入的值。重点
+
+实现 AuditorAware 接口示例:
+        @Configuration
+        @Slf4j
+        public class UserAuditor implements AuditorAware<String> {
+            /**
+             * 获取当前创建或修改的用户
+             * @return
+             */
+            @Override
+            public Optional<String> getCurrentAuditor() {
+                UserDetails user;
+                try {
+                    user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                    return Optional.ofNullable(user.getUsername());
+                }catch (Exception e){
+                    return Optional.empty();
+                }
+            }
+        }
+        关于方法 getCurrentAuditor 中获取用户名的操作可根据自己实际情况书写，比如上方我用到的是 Spring Secirity 的一种写法。

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>boot_data_masking</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.6.4</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>data_masking2.0</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.9</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <!--IK-Analyzer是一个开源的，基于java语言开发的轻量级的中文分词工具包，也就是可以将一串中文字符分割成一个个的词组或者字词-->
+            <!--用户可以配置暂停词和字典，暂停词也就是忽略词，字典也就是自定义组合词
+            添加配置文件(IKAnalyzer.cfg.xml)以及暂停词和字典放在src文件夹以下就可以-->
+            <groupId>com.janeluo</groupId>
+            <artifactId>ikanalyzer</artifactId>
+            <version>2012_u6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

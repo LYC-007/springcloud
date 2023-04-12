@@ -1,0 +1,12 @@
+EasyExcel是一个基于Java的简单、省内存的读写Excel的开源项目。在尽可能节约内存的情况下支持读写百M的Excel。底层使用的的xml储存的
+文档地址：https://alibaba-easyexcel.github.io/index.html
+github地址：https://github.com/alibaba/easyexcel
+示例链接：https://alibaba-easyexcel.github.io/quickstart/write.html
+示例链接：https://alibaba-easyexcel.github.io/quickstart/read.html
+https://blog.csdn.net/u013044713/article/details/120249233
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>easyexcel</artifactId>
+    <version>2.1.7</version>
+</dependency>
+

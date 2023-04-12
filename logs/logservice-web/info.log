@@ -1,0 +1,200 @@
+[2023/01/12 23:19:56841][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 30952 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/12 23:19:56875][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/12 23:20:01412][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/12 23:20:01441][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:20:01443][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/12 23:20:01445][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/12 23:20:01781][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/12 23:20:01782][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 4368 ms
+[2023/01/12 23:20:02449][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:2032)]
+{dataSource-0} closing ...
+[2023/01/12 23:20:02457][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Stopping service [Tomcat]
+[2023/01/12 23:20:02572][INFO][LOGSERVICE][日志系统][org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener.logMessage(ConditionEvaluationReportLoggingListener.java:136)]
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2023/01/12 23:30:45363][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 41308 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/12 23:30:45642][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/12 23:30:49045][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/12 23:30:49069][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:30:49071][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/12 23:30:49072][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/12 23:30:49324][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/12 23:30:49325][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 3535 ms
+[2023/01/12 23:30:51492][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:30:51557][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:220)]
+Tomcat started on port(s): 8080 (http) with context path ''
+[2023/01/12 23:30:51595][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:61)]
+Started Application in 7.811 seconds (JVM running for 13.094)
+[2023/01/12 23:30:58055][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023/01/12 23:30:58057][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)]
+Initializing Servlet 'dispatcherServlet'
+[2023/01/12 23:30:58060][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)]
+Completed initialization in 3 ms
+[2023/01/12 23:31:09063][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:985)]
+{dataSource-1} inited
+[2023/01/12 23:43:47605][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 57340 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/12 23:43:47631][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/12 23:43:50966][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/12 23:43:50992][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:43:50993][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/12 23:43:50995][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/12 23:43:51249][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/12 23:43:51251][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 3497 ms
+[2023/01/12 23:43:53000][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:43:53048][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:220)]
+Tomcat started on port(s): 8080 (http) with context path ''
+[2023/01/12 23:43:53082][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:61)]
+Started Application in 7.795 seconds (JVM running for 13.524)
+[2023/01/12 23:44:05110][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023/01/12 23:44:05113][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)]
+Initializing Servlet 'dispatcherServlet'
+[2023/01/12 23:44:05116][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)]
+Completed initialization in 3 ms
+[2023/01/12 23:44:16721][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:985)]
+{dataSource-1} inited
+[2023/01/12 23:48:34086][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 58860 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/12 23:48:34115][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/12 23:48:36718][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/12 23:48:36736][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:48:36737][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/12 23:48:36738][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/12 23:48:36969][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/12 23:48:36971][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 2734 ms
+[2023/01/12 23:48:38426][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:48:38475][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:220)]
+Tomcat started on port(s): 8080 (http) with context path ''
+[2023/01/12 23:48:38502][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:61)]
+Started Application in 5.647 seconds (JVM running for 12.186)
+[2023/01/12 23:49:00032][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023/01/12 23:49:00034][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)]
+Initializing Servlet 'dispatcherServlet'
+[2023/01/12 23:49:00039][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)]
+Completed initialization in 3 ms
+[2023/01/12 23:49:13835][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:985)]
+{dataSource-1} inited
+[2023/01/12 23:56:12336][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 55496 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/12 23:56:12382][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/12 23:56:17683][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/12 23:56:17712][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/12 23:56:17714][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/12 23:56:17716][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/12 23:56:18045][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/12 23:56:18047][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 5458 ms
+[2023/01/12 23:56:18769][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:2032)]
+{dataSource-0} closing ...
+[2023/01/12 23:56:18778][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Stopping service [Tomcat]
+[2023/01/12 23:56:18847][INFO][LOGSERVICE][日志系统][org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener.logMessage(ConditionEvaluationReportLoggingListener.java:136)]
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2023/01/13 00:07:40710][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 50036 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/13 00:07:40919][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/13 00:07:45119][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/13 00:07:45160][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/13 00:07:45163][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/13 00:07:45164][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/13 00:07:45583][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/13 00:07:45584][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 4502 ms
+[2023/01/13 00:07:46239][INFO][LOGSERVICE][日志系统][com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource(DruidDataSourceAutoConfigure.java:56)]
+Init DruidDataSource
+[2023/01/13 00:07:46573][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:985)]
+{dataSource-1} inited
+[2023/01/13 00:07:47936][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:2032)]
+{dataSource-1} closing ...
+[2023/01/13 00:07:47939][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:2104)]
+{dataSource-1} closed
+[2023/01/13 00:07:47949][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Stopping service [Tomcat]
+[2023/01/13 00:07:47989][INFO][LOGSERVICE][日志系统][org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener.logMessage(ConditionEvaluationReportLoggingListener.java:136)]
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2023/01/13 00:11:46687][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55)]
+Starting Application using Java 1.8.0_131 on XuFei with PID 58476 (E:\Java_Project\springcloud\boot_websocket\target\classes started by luoya in E:\Java_Project\springcloud)
+[2023/01/13 00:11:46718][INFO][LOGSERVICE][日志系统][org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:640)]
+No active profile set, falling back to 1 default profile: "default"
+[2023/01/13 00:11:49996][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108)]
+Tomcat initialized with port(s): 8080 (http)
+[2023/01/13 00:11:50023][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing ProtocolHandler ["http-nio-8080"]
+[2023/01/13 00:11:50025][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting service [Tomcat]
+[2023/01/13 00:11:50027][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting Servlet engine: [Apache Tomcat/9.0.58]
+[2023/01/13 00:11:50301][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring embedded WebApplicationContext
+[2023/01/13 00:11:50302][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:290)]
+Root WebApplicationContext: initialization completed in 3422 ms
+[2023/01/13 00:11:50604][INFO][LOGSERVICE][日志系统][com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource(DruidDataSourceAutoConfigure.java:56)]
+Init DruidDataSource
+[2023/01/13 00:11:50880][INFO][LOGSERVICE][日志系统][com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:985)]
+{dataSource-1} inited
+[2023/01/13 00:11:52491][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Starting ProtocolHandler ["http-nio-8080"]
+[2023/01/13 00:11:52537][INFO][LOGSERVICE][日志系统][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:220)]
+Tomcat started on port(s): 8080 (http) with context path ''
+[2023/01/13 00:11:52563][INFO][LOGSERVICE][日志系统][org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:61)]
+Started Application in 7.626 seconds (JVM running for 13.033)
+[2023/01/13 00:12:45490][INFO][LOGSERVICE][日志系统][org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173)]
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023/01/13 00:12:45491][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)]
+Initializing Servlet 'dispatcherServlet'
+[2023/01/13 00:12:45495][INFO][LOGSERVICE][日志系统][org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)]
+Completed initialization in 3 ms

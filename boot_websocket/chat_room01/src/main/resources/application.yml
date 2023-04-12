@@ -1,0 +1,13 @@
+spring:
+  main:
+    allow-circular-references: true
+
+mybatis-plus: #mybatis
+  configuration:
+    # 查看生产的sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config: #逻辑删除
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/*Mapper.xml

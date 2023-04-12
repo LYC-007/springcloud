@@ -1,0 +1,40 @@
+1.序列化：
+    JSON.toJSONString(Object object) //序列化: 调用静态方法,传递要转换的对象或者集合
+    JSON.toJSONString(Object object, SerializerFeature... features){....}
+        参数一: 被序列化的值;
+        参数二:
+            SerializerFeature是一个枚举类型,可以传多个;
+            SerializerFeature.WriteMapNullValue  ----  > 表示要序列化“null”值(FastJson在做序列化的时候“null”值默认是不被序列化的);
+            SerializerFeature.WriteNullStringAsEmpty--->表示把“null”值序列化为 : ""
+            SerializerFeature.WriteNullNumberAsZero---->表示把“null”值序列化为 : 0 (Integer 包装类)
+            SerializerFeature.WriteNullBooleanAsFalse--->表示把“null”值序列化为 : false  (Boolean 包装类)
+            SerializerFeature.WriteDateUseDateFormat---->表示把日期格式化;
+            SerializerFeature.PrettyFormat---->表示把序列化的Json字符串格式化;
+2.反序列化:
+    JSON.parseObject(String text, Class<T> clazz)  //传递要反序列化的Json字符串,传递Java对象的class对象
+    JSON.parseArray(String text, Class<T> clazz)//传递json格式字符串,传递转换后的集合的泛型的class对象
+    JSON.parseObject(String text, TypeReference<T> type, Feature... features)
+        例如:Map<String,Student> map = JSON.parseObject(jsonString,new TypeReference<Map<String,Student>>(){});
+        //调用parseObject,传递参数,TypeReference类型,在TypeReference类的泛型中,传递转后的Map集合
+        //TypeReference<T> 查看源码发现它的构造器是一个被“protected”修饰的,不是它的子类不能调用，所以要传入它匿名内部类;
+3.@JSonField  该注解作用于方法上,字段上和参数上.可在序列化和反序列化时进行特性功能定制.
+  - 注解属性 : name 序列化后的名字
+  - 注解属性 : ordinal序列化后的顺序
+  - 注解属性 : format 序列化后的格式
+  - 注解属性 : serialize 是否序列化该字段
+  - 注解属性 : deserialize 是否反序列化该字段
+  - 注解属性 : serialzeFeatures 序列化时的特性定义
+4.@ JSonType  该注解作用于类上,对该类的字段进行序列化和反序列化时的特性功能定制.
+  - 注解属性 : includes 要被序列化的字段.
+  - 注解属性 : orders 序列化后的顺序.
+  - 注解属性 : serialzeFeatures 序列化时的特性定义.
+5.Map和JavaBean相互转化:可以将MAP集合转换成一个 String,还可以将一个String类型的数据转换成Bean的实现对象
+     1).Map parse = (Map) JSONObject.parse("{\"name\":\"jack\"}");  // JavaBean对象转化成 Map
+     2).String jsonString = "{" +
+             "'张三': { 'age':10,'groupTag':'A','name':'张三','score':23 }," +
+             "'李四': { 'age':11,'groupTag':'B','name':'李四','score':28 }" +
+             "}";
+     HashMap<String, Hero> map = JSONObject.parseObject(jsonString, new TypeReference<HashMap<String, Hero>>() {});
+
+
+     3.Bean bean = JSONObject.parseObject(JSONObject.toJSONString(map), Bean.class);  // Map对象转化成Bean

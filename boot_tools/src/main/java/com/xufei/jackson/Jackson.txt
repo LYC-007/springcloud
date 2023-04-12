@@ -1,0 +1,16 @@
+别再使用 fastJson 了！漏洞天天报，Bug 修不完。快来拥抱 Jackson 吧！
+
+
+Jackson 是用来序列化和反序列化 json 的 Java 的开源框架。
+Spring MVC 的默认 json 解析器便是 Jackson。
+与其他 Java 的 json 的框架 Gson 等相比， Jackson 解析大的 json 文件速度比较快；
+Jackson 运行时占用内存比较低，性能比较好；Jackson 有灵活的 API，可以很容易进行扩展和定制。
+Jackson 的核心模块由三部分组成:
+    1.jackson-core，核心包，提供基于"流模式"解析的相关 API，它包括 JsonPaser 和 JsonGenerator。
+        Jackson 内部实现正是通过高性能的流模式 API 的 JsonGenerator 和 JsonParser 来生成和解析 json。
+    2.jackson-annotations，注解包，提供标准注解功能；
+    3.jackson-databind ，数据绑定包， 提供基于"对象绑定" 解析的相关 API ( ObjectMapper ) 和"树模型" 解析的相关 API (JsonNode)；
+        基于"对象绑定" 解析的 API 和"树模型"解析的 API 依赖基于"流模式"解析的 API。
+
+
+jackson-databind 依赖 jackson-core 和 jackson-annotations，当添加 jackson-databind 之后， jackson-core 和 jackson-annotations 也随之添加到 Java 项目工程中。

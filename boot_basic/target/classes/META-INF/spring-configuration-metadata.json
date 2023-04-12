@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "upload",
+      "type": "com.xufei.springcloud.设计模式.代理模式.proxy.FileUploadProxy",
+      "sourceType": "com.xufei.springcloud.设计模式.代理模式.proxy.FileUploadProxy"
+    }
+  ],
+  "properties": [
+    {
+      "name": "upload.ac",
+      "type": "org.springframework.context.ApplicationContext",
+      "sourceType": "com.xufei.springcloud.设计模式.代理模式.proxy.FileUploadProxy"
+    },
+    {
+      "name": "upload.file-suffix",
+      "type": "java.util.Map<java.lang.String,java.util.List<java.lang.String>>",
+      "sourceType": "com.xufei.springcloud.设计模式.代理模式.proxy.FileUploadProxy"
+    }
+  ],
+  "hints": []
+}
